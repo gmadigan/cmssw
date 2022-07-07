@@ -122,10 +122,12 @@ inline CSCDBGains *CSCGainsDBConditions::prefillDBGains() {
         itemvector[i] = itemvector[counter];
       }
     }
+    /*
     if (counter > 223968) {
       itemvector[counter].gain_slope = int(db_slope[i]);
       itemvector[i] = itemvector[counter];
     }
+    */
   }
   return cndbgains;
 }

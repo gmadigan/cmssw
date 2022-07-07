@@ -133,13 +133,14 @@ inline CSCDBCrosstalk *CSCCrosstalkDBConditions::prefillDBCrosstalk() {
         // dbslope " <<db_slope_r[k]<<" new slope "<<new_slope_r[k]<<std::endl;
       }
     }
-
+    /*
     if (counter > 223968) {
       itemvector[counter].xtalk_slope_right = int(db_slope_r[i]);
       itemvector[counter].xtalk_slope_left = int(db_slope_l[i]);
       itemvector[counter].xtalk_intercept_right = int(db_intercept_r[i]);
       itemvector[counter].xtalk_intercept_left = int(db_intercept_l[i]);
     }
+    */
   }
 
   return cndbcrosstalk;

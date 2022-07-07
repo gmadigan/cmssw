@@ -206,7 +206,7 @@ inline CSCDBNoiseMatrix *CSCNoiseMatrixDBConditions::prefillDBNoiseMatrix() {
         itemvector[i] = itemvector[counter];
       }
     }
-
+    /*
     if (counter > 223968) {
       itemvector[counter].elem33 = int(db_elem33[i]);
       itemvector[counter].elem34 = int(db_elem34[i]);
@@ -222,6 +222,7 @@ inline CSCDBNoiseMatrix *CSCNoiseMatrixDBConditions::prefillDBNoiseMatrix() {
       itemvector[counter].elem77 = int(db_elem77[i]);
       itemvector[i] = itemvector[counter];
     }
+    */
   }
 
   return cndbmatrix;

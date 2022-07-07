@@ -38,7 +38,7 @@ process.PoolDBOutputService = cms.Service("PoolDBOutputService",
     logconnect = cms.untracked.string('sqlite_file:xtalklog.db'),
     toPut = cms.VPSet(cms.PSet(
         record = cms.string('CSCDBCrosstalkRcd'),
-        tag = cms.string('CSCDBCrosstalk_ME42')
+        tag = cms.string('CSCDBCrosstalk_Oct_2015')
     ))
 )
 

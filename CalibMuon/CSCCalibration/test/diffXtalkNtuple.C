@@ -17,12 +17,14 @@ TFile *f = new TFile("RootFile","RECREATE");
 
 TNtuple *ntuple = new TNtuple("DiffXtalk","data from new ascii file","index:diffXtalkR:diffIntR:diffXtalkL:diffIntL");
 
+std::cout<<" looping diff__Xtalk ... "<<nlines<<std::endl;
 while (1) {
   i++;
   in >> index >> diffXtalkR >> diffIntR >> diffXtalkL >> diffIntL ;
   if (!in.good()) break;
 
   DiffXtalk->Fill(index,diffXtalkR,diffIntR,diffXtalkL,diffIntL);
+  if (i % 10000 == 0) std::cout<< " Please Wait ... " << nlines <<std::endl;
   nlines++;
 }
 

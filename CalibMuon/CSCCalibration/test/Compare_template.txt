@@ -77,7 +77,7 @@ Compare::Compare(const edm::ParameterSet& iConfig)
   //=========== Compare Pedestals =================
   std::cout<<"Comparing PEDESTALS, please wait!"<<std::endl;
 
-  const int MAX_SIZE = 252288;
+  const int MAX_SIZE = 273024;
 
   int old_index;
   float old_ped, old_rms;
@@ -96,11 +96,15 @@ Compare::Compare(const edm::ParameterSet& iConfig)
     std::cerr <<"Error: old_dbpeds.dat -> no such file!"<< std::endl;
     exit(1);
   }
-  
+  //int count(0);
   while (!olddata.eof() ) { 
+    
     olddata >> old_index >> old_ped >> old_rms ; 
     old_index_id.push_back(old_index);
     old_peds.push_back(old_ped);
+
+    //count++;
+    //if (count > MAX_SIZE + 3) exit(1);
   }
   olddata.close();
   
@@ -111,7 +115,7 @@ Compare::Compare(const edm::ParameterSet& iConfig)
     std::cerr <<"Error: Peds_FileName -> no such file!"<< std::endl;
     exit(1);
   }
-  
+
   while (!newdata.eof() ) { 
     newdata >> new_index >> new_ped >> new_rms ; 
     new_index_id.push_back(new_index);
@@ -122,11 +126,12 @@ Compare::Compare(const edm::ParameterSet& iConfig)
   diffPeds.resize(MAX_SIZE);
   
   for(int i=0; i<MAX_SIZE;++i){
+    if (i%10000 == 0) std::cout<<"Comparing PEDESTALS, please wait! "<< i << std::endl;
     for (unsigned int k=0;k<new_index_id.size()-1;++k){
       if(old_index_id[i] == new_index_id[k]){
 	diffPeds[k]=(new_peds[k] - old_peds[i]/10.)/(old_peds[i]/10.);
-	new_peds.erase(new_peds.begin());
-	new_index_id.erase(new_index_id.begin());
+	//new_peds.erase(new_peds.begin());
+	//new_index_id.erase(new_index_id.begin());
 	myPedsFile<<old_index_id[i]<<"  "<<diffPeds[k]<<std::endl;	
       }
     }
@@ -215,6 +220,7 @@ Compare::Compare(const edm::ParameterSet& iConfig)
     myoldintR[i]=old_Rint[i];
     myoldintR[i]=old_Lint[i];
 
+    if (i%10000 == 0) std::cout<<"Comparing CROSSTALK, please wait! "<< i << std::endl;
     for (unsigned int k=0;k<new_index_id.size()-1;k++){
       counter1=new_index_id[k];
       if(counter == counter1){
@@ -291,7 +297,8 @@ Compare::Compare(const edm::ParameterSet& iConfig)
   for(int i=0; i<MAX_SIZE;++i){
     counter=old_index_id[i];  
     myoldgains[i]=old_gains[i];
-
+    if (i%10000 == 0) std::cout<<"Comparing GAINS, please wait! "<< i << std::endl;    
+ 
     for (unsigned int k=0;k<new_index_id.size()-1;k++){
       counter1=new_index_id[k];
       if(counter == counter1){
@@ -453,6 +460,8 @@ Compare::Compare(const edm::ParameterSet& iConfig)
   myoldel77.resize(MAX_SIZE);
 
   for(int i=0; i<MAX_SIZE;++i){
+    if (i%10000 == 0) std::cout<<"Comparing NOISE MATRIX, please wait! "<< i << std::endl;
+   
     counter=old_index_id[i];  
     myoldel33[i]=old_el33[i];
     myoldel34[i]=old_el34[i];

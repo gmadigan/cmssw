@@ -10,12 +10,12 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
     timetype = cms.string('runnumber'),
     toGet = cms.VPSet(cms.PSet(
         record = cms.string('CSCDBPedestalsRcd'),
-        tag = cms.string('CSCDBPedestals_express')
+        tag = cms.string('CSCDBPedestals_ungangedME11A_v1_hlt')
     )),
-    connect=cms.string("oracle://cms_orcon_prod/CMS_COND_31X_CSC"),
+    connect=cms.string("frontier://FrontierProd/CMS_CONDITIONS"),
     #string connect = "frontier://FrontierDev/CMS_COND_CSC"
     DBParameters = cms.PSet(
-        authenticationPath = cms.untracked.string('/nfshome0/popcondev/conddb/'),
+        authenticationPath = cms.untracked.string('/afs/cern.ch/cms/DB/conddb'),
         authenticationMethod = cms.untracked.uint32(0)
     )
 )
@@ -23,7 +23,9 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1)
 )
-process.source = cms.Source("EmptySource")
+process.source = cms.Source("EmptySource",
+    firstRun = cms.untracked.uint32(1)
+)
 
 process.prod = cms.EDAnalyzer("CSCPedestalDBReadAnalyzer")
 

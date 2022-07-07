@@ -14,12 +14,14 @@ TFile *f = new TFile("RootFile","RECREATE");
 
 TNtuple *ntuple = new TNtuple("DiffPeds","data from new ascii file","index:diffPeds");
 
+std::cout<<" looping diff_Peds ... "<<nlines<<std::endl;
 while (1) {
   i++;
   in >> index >> diffPeds ;
   if (!in.good()) break;
 
   DiffPeds->Fill(index,diffPeds);
+  if (i % 10000 == 0) std::cout<< " Please Wait ... " << nlines <<std::endl;
   nlines++;
 }
 

@@ -20,6 +20,7 @@ while (1) {
   if (!in.good()) break;
 
   DiffGains->Fill(index,diffGains);
+  if (i % 10000 == 0) std::cout<< " Please Wait ... " << nlines <<std::endl;
   nlines++;
 }
 
