@@ -14,7 +14,7 @@ void FuncName(){
   Int_t nlines = 0;
   TFile *f = new TFile("RootFile","RECREATE");
 
-  TNtuple *ntuple = new TNtuple("DiffGains","data from new ascii file","index:diffGains");
+  TNtuple *DiffGains = new TNtuple("DiffGains","data from new ascii file","index:diffGains");
 
   while (1) {
     i++;

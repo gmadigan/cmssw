@@ -14,7 +14,7 @@ void FuncName(){
   Int_t nlines = 0;
   TFile *f = new TFile("RootFile","RECREATE");
   
-  TNtuple *ntuple = new TNtuple("DiffPeds","data from new ascii file","index:diffPeds");
+  TNtuple *DiffPeds = new TNtuple("DiffPeds","data from new ascii file","index:diffPeds");
   
   std::cout<<" looping diff_Peds ... "<<nlines<<std::endl;
   while (1) {

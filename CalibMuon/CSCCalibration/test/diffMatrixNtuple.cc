@@ -14,7 +14,7 @@ void FuncName(){
   Int_t nlines = 0;
   TFile *f = new TFile("RootFile","RECREATE");
   
-  TNtuple *ntuple = new TNtuple("DiffMatrix","data from new ascii file","index:diffElem33:diffElem34:diffElem44:diffElem35:diffElem45:diffElem55:diffElem46:diffElem56:diffElem66:diffElem57:diffElem67:diffElem77");
+  TNtuple *DiffMatrix = new TNtuple("DiffMatrix","data from new ascii file","index:diffElem33:diffElem34:diffElem44:diffElem35:diffElem45:diffElem55:diffElem46:diffElem56:diffElem66:diffElem57:diffElem67:diffElem77");
   
   std::cout<<" looping diff_Matrix ... "<<nlines<<std::endl;
   while (1) {

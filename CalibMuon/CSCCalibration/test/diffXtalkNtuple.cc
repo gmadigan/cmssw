@@ -17,7 +17,7 @@ void FuncName(){
   Int_t nlines = 0;
   TFile *f = new TFile("RootFile","RECREATE");
   
-  TNtuple *ntuple = new TNtuple("DiffXtalk","data from new ascii file","index:diffXtalkR:diffIntR:diffXtalkL:diffIntL");
+  TNtuple *DiffXtalk = new TNtuple("DiffXtalk","data from new ascii file","index:diffXtalkR:diffIntR:diffXtalkL:diffIntL");
   
   std::cout<<" looping diff__Xtalk ... "<<nlines<<std::endl;
   while (1) {
