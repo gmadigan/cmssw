@@ -4,7 +4,7 @@ gROOT->ProcessLine(".x CMSStyle.C");
 CMSStyle();
 
 TFile *fNew = new TFile("NEWConstants_validationHists_global.root");
-TFile *fOld = new TFile("DBCostants_validationHists_global.root");
+TFile *fOld = new TFile("DBConstants_validationHists_global.root");
 
 TLegend* leg = new TLegend(0.20,0.75,0.38,0.91,"","brNDC");
 leg->SetTextFont(132);
