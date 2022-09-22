@@ -14,17 +14,17 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 
 #process.GlobalTag.globaltag = 'GR_P_V39::All'
 process.load('Configuration.StandardSequences.Services_cff')
-process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff')
+process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #process.GlobalTag.globaltag = 'GR_P_V54'
 #process.GlobalTag.globaltag = '74X_mcRun2_startup_v2'
-process.GlobalTag.globaltag = '74X_dataRun2_Prompt_v1'
+process.GlobalTag.globaltag = '123X_dataRun3_HLT_v8'
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 process.options = cms.untracked.PSet( SkipEvent = cms.untracked.vstring('ProductNotFound') )
 
 #process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2012D/SingleMu/RAW/v1/000/208/307/FE3B52A0-B93A-E211-8FA3-BCAEC518FF76.root"))
-process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2015D/SingleMuon/RAW/v1/000/256/675/00000/48FABF11-E95C-E511-83AF-02163E014590.root"))
+process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2022D/Muon/RAW/v1/000/357/538/00000/78a9c700-a249-4831-95aa-cf43c67ab824.root"))
 #process.source = cms.Source ("PoolSource",
 #                             fileNames = cms.untracked.vstring(
 #                                                               "/store/data/Run2015B/SingleMu/RAW/v1/000/251/156/00000/1A670C95-0D25-E511-8601-02163E011F63.root"
@@ -65,7 +65,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 
 
 process.cscValidation = cms.EDAnalyzer("CSCValidation",
-    rootFileName = cms.untracked.string("DBCostants_validationHists_global.root"),
+    rootFileName = cms.untracked.string("DBConstants_validationHists_global.root"),
     isSimulation = cms.untracked.bool(False),
     writeTreeToFile = cms.untracked.bool(True),
     useDigis = cms.untracked.bool(True),
@@ -93,10 +93,10 @@ process.cscValidation = cms.EDAnalyzer("CSCValidation",
 process.load("L1Trigger.CSCTriggerPrimitives.cscTriggerPrimitiveDigis_cfi")
 process.cscTriggerPrimitiveDigis.CSCComparatorDigiProducer = "muonCSCDigis:MuonCSCComparatorDigi"
 process.cscTriggerPrimitiveDigis.CSCWireDigiProducer = "muonCSCDigis:MuonCSCWireDigi"
-process.cscTriggerPrimitiveDigis.tmbParam.mpcBlockMe1a = 0
+process.cscTriggerPrimitiveDigis.tmbPhase1.mpcBlockMe1a = 0
 process.load("L1TriggerConfig.L1CSCTPConfigProducers.L1CSCTriggerPrimitivesConfig_cff")
-process.l1csctpconf.alctParamMTCC2.alctNplanesHitPretrig = 3
-process.l1csctpconf.alctParamMTCC2.alctNplanesHitAccelPretrig = 3
+process.l1csctpconf.alctParam.alctNplanesHitPretrig = 3
+process.l1csctpconf.alctParam.alctNplanesHitAccelPretrig = 3
 process.l1csctpconf.clctParam.clctNplanesHitPretrig = 3
 process.l1csctpconf.clctParam.clctHitPersist = 4
 

@@ -9,52 +9,42 @@ process.load("Configuration/StandardSequences/FrontierConditions_GlobalTag_cff")
 process.load("Configuration/StandardSequences/RawToDigi_Data_cff")
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
-
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
+
 
 #process.GlobalTag.globaltag = 'GR_P_V39::All'
 process.load('Configuration.StandardSequences.Services_cff')
-process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff')
-process.GlobalTag.globaltag = '74X_dataRun2_Prompt_v1'
+process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
+#process.GlobalTag.globaltag = 'GR_P_V54'
+#process.GlobalTag.globaltag = '74X_mcRun2_startup_v2'
+process.GlobalTag.globaltag = '123X_dataRun3_HLT_v8'
 
-process.load("CondCore.DBCommon.CondDBCommon_cfi")
-from CondCore.DBCommon.CondDBSetup_cfi import *
-process.cscConditions = cms.ESSource("PoolDBESSource",
-                           DBParameters = cms.PSet(messageLevel = cms.untracked.int32(0)),
-                           timetype = cms.string('runnumber'),
-                           toGet = cms.VPSet(
-                                             cms.PSet(record = cms.string('CSCDBGainsRcd'),
-                                                      tag = cms.string('CSCDBGains_Oct_2015')),
-                                             cms.PSet(record = cms.string('CSCDBNoiseMatrixRcd'),
-                                                      tag = cms.string('CSCDBNoiseMatrix_Oct_2015')),
-                                             cms.PSet(record = cms.string('CSCDBCrosstalkRcd'),
-                                                      tag = cms.string('CSCDBCrosstalk_Oct_2015')),
-                                             cms.PSet(record = cms.string('CSCDBPedestalsRcd'),
-                                                      tag = cms.string('CSCDBPedestals_Oct_2015'))
-                                             ), 
-                           connect = cms.string('sqlite_file:NewConstantsTest.db')
-                           )
+#### to use local sqlite file
+process.load("CalibMuon.Configuration.getCSCConditions_frontier_cff")
+process.cscConditions.connect='sqlite_file:NewConstantsTest.db'
+process.cscConditions.toGet = cms.VPSet(
+    cms.PSet(record = cms.string('CSCDBGainsRcd'),
+        tag = cms.string('CSCDBGains_testing_Sep_2022')),
+        cms.PSet(record = cms.string('CSCDBNoiseMatrixRcd'),
+            tag = cms.string('CSCDBNoiseMatrix_testing_Sep_2022')),
+        cms.PSet(record = cms.string('CSCDBCrosstalkRcd'),
+            tag = cms.string('CSCDBCrosstalk_testing_Sep_2022')),
+        cms.PSet(record = cms.string('CSCDBPedestalsRcd'),
+            tag = cms.string('CSCDBPedestals_testing_Sep_2022'))
+    )
 process.es_prefer_cscConditions = cms.ESPrefer("PoolDBESSource","cscConditions")
 
-#process.cscConditions.connect='sqlite_file:NewConstantsTest.db'
-#process.cscConditions.toGet = cms.VPSet(
-#              cms.PSet(record = cms.string('CSCDBGainsRcd'),
-#                       tag = cms.string('CSCDBGains_Oct_2015')),
-#              cms.PSet(record = cms.string('CSCDBNoiseMatrixRcd'),
-#                       tag = cms.string('CSCDBNoiseMatrix_Oct_2015')),
-#              cms.PSet(record = cms.string('CSCDBCrosstalkRcd'),
-#                       tag = cms.string('CSCDBCrosstalk_Oct_2015')),
-#              cms.PSet(record = cms.string('CSCDBPedestalsRcd'),
-#                       tag = cms.string('CSCDBPedestals_Oct_2015'))
-#      )
-#      
-#process.es_prefer_cscConditions = cms.ESPrefer("PoolDBESSource","cscConditions")
-
-
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+
 process.options = cms.untracked.PSet( SkipEvent = cms.untracked.vstring('ProductNotFound') )
-#process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring("/store/data/Run2012D/SingleMu/RAW/v1/000/208/307/FE4830E1-C93A-E211-BDBC-00237DDBE0E2.root"))
-process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2015D/SingleMuon/RAW/v1/000/256/675/00000/48FABF11-E95C-E511-83AF-02163E014590.root"))
+
+#process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2012D/SingleMu/RAW/v1/000/208/307/FE3B52A0-B93A-E211-8FA3-BCAEC518FF76.root"))
+process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2022D/Muon/RAW/v1/000/357/538/00000/78a9c700-a249-4831-95aa-cf43c67ab824.root"))
+#process.source = cms.Source ("PoolSource",
+#                             fileNames = cms.untracked.vstring(
+#                                                               "/store/data/Run2015B/SingleMu/RAW/v1/000/251/156/00000/1A670C95-0D25-E511-8601-02163E011F63.root"
+#                                                               )
+#                             )
 
 
 ####   START OF EXPLICIT POSTLS1 CONFIGURATION    #####
@@ -75,6 +65,7 @@ process.csc2DRecHits.CSCUseGasGainCorrections = cms.bool(False)
 ## process.csc2DRecHits.CSCUseTimingCorrections = cms.bool(False)
 
 ####   END OF EXPLICIT POSTLS1 CONFIGURATION    #####
+
 
 
 
@@ -117,10 +108,10 @@ process.cscValidation = cms.EDAnalyzer("CSCValidation",
 process.load("L1Trigger.CSCTriggerPrimitives.cscTriggerPrimitiveDigis_cfi")
 process.cscTriggerPrimitiveDigis.CSCComparatorDigiProducer = "muonCSCDigis:MuonCSCComparatorDigi"
 process.cscTriggerPrimitiveDigis.CSCWireDigiProducer = "muonCSCDigis:MuonCSCWireDigi"
-process.cscTriggerPrimitiveDigis.tmbParam.mpcBlockMe1a = 0
+process.cscTriggerPrimitiveDigis.tmbPhase1.mpcBlockMe1a = 0
 process.load("L1TriggerConfig.L1CSCTPConfigProducers.L1CSCTriggerPrimitivesConfig_cff")
-process.l1csctpconf.alctParamMTCC2.alctNplanesHitPretrig = 3
-process.l1csctpconf.alctParamMTCC2.alctNplanesHitAccelPretrig = 3
+process.l1csctpconf.alctParam.alctNplanesHitPretrig = 3
+process.l1csctpconf.alctParam.alctNplanesHitAccelPretrig = 3
 process.l1csctpconf.clctParam.clctNplanesHitPretrig = 3
 process.l1csctpconf.clctParam.clctHitPersist = 4
 
@@ -140,10 +131,11 @@ process.lctreader = cms.EDAnalyzer("CSCTriggerPrimitivesReader",
 process.TFileService = cms.Service("TFileService",
                                    fileName = cms.string('TPEHists.root'),
                                    closeFileFast = cms.untracked.bool(True)
-			           )
+                                   )
 
 # Original
 #process.p = cms.Path(process.gtDigis * process.muonCSCDigis * process.csc2DRecHits * process.cscSegments * process.cscTriggerPrimitiveDigis * process.lctreader * process.cscValidation)
+
 
 # From RECO
 # process.p = cms.Path(process.cscValidation)
