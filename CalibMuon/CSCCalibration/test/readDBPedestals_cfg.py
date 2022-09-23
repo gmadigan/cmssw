@@ -10,7 +10,7 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
     timetype = cms.string('runnumber'),
     toGet = cms.VPSet(cms.PSet(
         record = cms.string('CSCDBPedestalsRcd'),
-        tag = cms.string('CSCDBPedestals_ungangedME11A_v1_hlt')
+        tag = cms.string('CSCDBPedestals_hlt')
     )),
     connect=cms.string("frontier://FrontierProd/CMS_CONDITIONS"),
     #string connect = "frontier://FrontierDev/CMS_COND_CSC"
@@ -24,7 +24,7 @@ process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1)
 )
 process.source = cms.Source("EmptySource",
-    firstRun = cms.untracked.uint32(1)
+    firstRun = cms.untracked.uint32(266566)
 )
 
 process.prod = cms.EDAnalyzer("CSCPedestalDBReadAnalyzer")
