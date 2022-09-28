@@ -5,3 +5,6 @@ __init__.py
 #*#
 *~
 *.pb
+CalibMuon/CSCCalibration/test/run_*_dir
+CalibMuon/CSCCalibration/test/Results/*
+CalibMuon/CSCCalibration/test/Figures/*
