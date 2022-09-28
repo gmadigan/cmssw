@@ -80,7 +80,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 
 
 process.cscValidation = cms.EDAnalyzer("CSCValidation",
-    rootFileName = cms.untracked.string("/tmp/gmadigan/NEWConstants_validationHists_global.root"),
+    rootFileName = cms.untracked.string("NEWConstants_validationHists_global.root"),
     isSimulation = cms.untracked.bool(False),
     writeTreeToFile = cms.untracked.bool(True),
     useDigis = cms.untracked.bool(True),
