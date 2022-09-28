@@ -24,13 +24,13 @@ process.load("CalibMuon.Configuration.getCSCConditions_frontier_cff")
 process.cscConditions.connect='sqlite_file:NewConstantsTest.db'
 process.cscConditions.toGet = cms.VPSet(
     cms.PSet(record = cms.string('CSCDBGainsRcd'),
-        tag = cms.string('CSCDBGains_testing_Sep_2022')),
+        tag = cms.string('CSCDBGains_Testing_Sep_2022')),
         cms.PSet(record = cms.string('CSCDBNoiseMatrixRcd'),
-            tag = cms.string('CSCDBNoiseMatrix_testing_Sep_2022')),
+            tag = cms.string('CSCDBNoiseMatrix_Testing_Sep_2022')),
         cms.PSet(record = cms.string('CSCDBCrosstalkRcd'),
-            tag = cms.string('CSCDBCrosstalk_testing_Sep_2022')),
+            tag = cms.string('CSCDBCrosstalk_Testing_Sep_2022')),
         cms.PSet(record = cms.string('CSCDBPedestalsRcd'),
-            tag = cms.string('CSCDBPedestals_testing_Sep_2022'))
+            tag = cms.string('CSCDBPedestals_Testing_Sep_2022'))
     )
 process.es_prefer_cscConditions = cms.ESPrefer("PoolDBESSource","cscConditions")
 
@@ -80,7 +80,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 
 
 process.cscValidation = cms.EDAnalyzer("CSCValidation",
-    rootFileName = cms.untracked.string("NEWConstants_validationHists_global.root"),
+    rootFileName = cms.untracked.string("/tmp/gmadigan/NEWConstants_validationHists_global.root"),
     isSimulation = cms.untracked.bool(False),
     writeTreeToFile = cms.untracked.bool(True),
     useDigis = cms.untracked.bool(True),
