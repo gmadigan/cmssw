@@ -1,6 +1,6 @@
 void peds(){
   
-  TFile *fDiffPeds = TFile::Open("Calibration_run_10000014_Sep_20_2022/diffPeds_Sep_20_2022.root");
+  TFile *fDiffPeds = TFile::Open("Results/run_10000015/Calibration_Sep_28_2022/diffPeds_Sep_28_2022.root");
   TTree* DiffPeds = (TTree*)fDiffPeds->Get("DiffPeds");
 
   // index vs diff pedestals
@@ -120,20 +120,22 @@ void peds(){
   mME42_line->Draw("SAME");
   end_line->Draw("SAME");
 
-  c1->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffPeds_rings.pdf");
+  //c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffPeds_rings.pdf");
+  c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffPeds_rings.png");
   
   // diff pedestals
   TCanvas *c2  = new TCanvas("c2","",800,600);
   c2->SetLogy();
   DiffPeds->Draw("diffPeds");
 
-  c2->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffPeds.pdf");
+  //c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffPeds.pdf");
+  c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffPeds.png");
 
 }
 
 void matrix(){
 
-  TFile *fDiffMatrix = TFile::Open("Calibration_run_10000014_Sep_20_2022/diffMatrix_Sep_20_2022.root");
+  TFile *fDiffMatrix = TFile::Open("Results/run_10000015/Calibration_Sep_28_2022/diffMatrix_Sep_28_2022.root");
   TTree* DiffMatrix = (TTree*)fDiffMatrix->Get("DiffMatrix");
 
   // index vs diff noise matrix
@@ -363,27 +365,27 @@ void matrix(){
   DiffMatrix->Draw("index:diffElem35");
   c3->Update();
 
-  TLine *pME11b_line_3 = new TLine(c4->GetUxmin(), pME11b, c4->GetUxmax(), pME11b);
-  TLine *pME12_line_3 = new TLine(c4->GetUxmin(), pME12, c4->GetUxmax(), pME12);
-  TLine *pME13_line_3 = new TLine(c4->GetUxmin(), pME13, c4->GetUxmax(), pME13);
-  TLine *pME11a_line_3 = new TLine(c4->GetUxmin(), pME11a, c4->GetUxmax(), pME11a);
-  TLine *pME21_line_3 = new TLine(c4->GetUxmin(), pME21, c4->GetUxmax(), pME21);
-  TLine *pME22_line_3 = new TLine(c4->GetUxmin(), pME22, c4->GetUxmax(), pME22);
-  TLine *pME31_line_3 = new TLine(c4->GetUxmin(), pME31, c4->GetUxmax(), pME31);
-  TLine *pME32_line_3 = new TLine(c4->GetUxmin(), pME32, c4->GetUxmax(), pME32);
-  TLine *pME41_line_3 = new TLine(c4->GetUxmin(), pME41, c4->GetUxmax(), pME41);
-  TLine *pME42_line_3 = new TLine(c4->GetUxmin(), pME42, c4->GetUxmax(), pME42);
-  TLine *mME11b_line_3 = new TLine(c4->GetUxmin(), mME11b, c4->GetUxmax(), mME11b);
-  TLine *mME12_line_3 = new TLine(c4->GetUxmin(), mME12, c4->GetUxmax(), mME12);
-  TLine *mME13_line_3 = new TLine(c4->GetUxmin(), mME13, c4->GetUxmax(), mME13);
-  TLine *mME11a_line_3 = new TLine(c4->GetUxmin(), mME11a, c4->GetUxmax(), mME11a);
-  TLine *mME21_line_3 = new TLine(c4->GetUxmin(), mME21, c4->GetUxmax(), mME21);
-  TLine *mME22_line_3 = new TLine(c4->GetUxmin(), mME22, c4->GetUxmax(), mME22);
-  TLine *mME31_line_3 = new TLine(c4->GetUxmin(), mME31, c4->GetUxmax(), mME31);
-  TLine *mME32_line_3 = new TLine(c4->GetUxmin(), mME32, c4->GetUxmax(), mME32);
-  TLine *mME41_line_3 = new TLine(c4->GetUxmin(), mME41, c4->GetUxmax(), mME41);
-  TLine *mME42_line_3 = new TLine(c4->GetUxmin(), mME42, c4->GetUxmax(), mME42);
-  TLine *end_line_3 = new TLine(c4->GetUxmin(), end, c4->GetUxmax(), end);
+  TLine *pME11b_line_3 = new TLine(c3->GetUxmin(), pME11b, c3->GetUxmax(), pME11b);
+  TLine *pME12_line_3 = new TLine(c3->GetUxmin(), pME12, c3->GetUxmax(), pME12);
+  TLine *pME13_line_3 = new TLine(c3->GetUxmin(), pME13, c3->GetUxmax(), pME13);
+  TLine *pME11a_line_3 = new TLine(c3->GetUxmin(), pME11a, c3->GetUxmax(), pME11a);
+  TLine *pME21_line_3 = new TLine(c3->GetUxmin(), pME21, c3->GetUxmax(), pME21);
+  TLine *pME22_line_3 = new TLine(c3->GetUxmin(), pME22, c3->GetUxmax(), pME22);
+  TLine *pME31_line_3 = new TLine(c3->GetUxmin(), pME31, c3->GetUxmax(), pME31);
+  TLine *pME32_line_3 = new TLine(c3->GetUxmin(), pME32, c3->GetUxmax(), pME32);
+  TLine *pME41_line_3 = new TLine(c3->GetUxmin(), pME41, c3->GetUxmax(), pME41);
+  TLine *pME42_line_3 = new TLine(c3->GetUxmin(), pME42, c3->GetUxmax(), pME42);
+  TLine *mME11b_line_3 = new TLine(c3->GetUxmin(), mME11b, c3->GetUxmax(), mME11b);
+  TLine *mME12_line_3 = new TLine(c3->GetUxmin(), mME12, c3->GetUxmax(), mME12);
+  TLine *mME13_line_3 = new TLine(c3->GetUxmin(), mME13, c3->GetUxmax(), mME13);
+  TLine *mME11a_line_3 = new TLine(c3->GetUxmin(), mME11a, c3->GetUxmax(), mME11a);
+  TLine *mME21_line_3 = new TLine(c3->GetUxmin(), mME21, c3->GetUxmax(), mME21);
+  TLine *mME22_line_3 = new TLine(c3->GetUxmin(), mME22, c3->GetUxmax(), mME22);
+  TLine *mME31_line_3 = new TLine(c3->GetUxmin(), mME31, c3->GetUxmax(), mME31);
+  TLine *mME32_line_3 = new TLine(c3->GetUxmin(), mME32, c3->GetUxmax(), mME32);
+  TLine *mME41_line_3 = new TLine(c3->GetUxmin(), mME41, c3->GetUxmax(), mME41);
+  TLine *mME42_line_3 = new TLine(c3->GetUxmin(), mME42, c3->GetUxmax(), mME42);
+  TLine *end_line_3 = new TLine(c3->GetUxmin(), end, c3->GetUxmax(), end);
 
   pME11b_line_3->SetLineColor(kRed);
   pME12_line_3->SetLineColor(kRed);
@@ -1279,18 +1281,42 @@ void matrix(){
   mME42_line_12->Draw("SAME");
   end_line_12->Draw("SAME");
 
-  c1->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem33_rings.pdf");
-  c2->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem34_rings.pdf");
-  c3->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem35_rings.pdf");
-  c4->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem44_rings.pdf");
-  c5->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem45_rings.pdf");
-  c6->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem46_rings.pdf");
-  c7->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem55_rings.pdf");
-  c8->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem56_rings.pdf");
-  c9->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem57_rings.pdf");
-  c10->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem66_rings.pdf");
-  c11->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem67_rings.pdf");
-  c12->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffMatrix_Elem77_rings.pdf");
+  ////c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem33_rings.pdf");
+  c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem33_rings.png");
+
+  ////c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem34_rings.pdf");
+  c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem34_rings.png");
+
+  ////c3->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem35_rings.pdf");
+  c3->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem35_rings.png");
+
+  ////c4->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem44_rings.pdf");
+  c4->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem44_rings.png");
+
+  ////c5->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem45_rings.pdf");
+  c5->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem45_rings.png");
+
+  ////c6->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem46_rings.pdf");
+  c6->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem46_rings.png");
+
+  ////c7->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem55_rings.pdf");
+  c7->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem55_rings.png");
+
+  ////c8->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem56_rings.pdf");
+  c8->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem56_rings.png");
+
+  ////c9->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem57_rings.pdf");
+  c9->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem57_rings.png");
+
+  ////c10->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem66_rings.pdf");
+  c10->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem66_rings.png");
+
+  ////c11->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem67_rings.pdf");
+  c11->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem67_rings.png");
+
+  ////c12->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem77_rings.pdf");
+  c12->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffMatrix_Elem77_rings.png");
+
   
   // diff noise matrix
 
@@ -1349,28 +1375,51 @@ void matrix(){
   c24->cd();
   DiffMatrix->Draw("diffElem77");
 
-  c13->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem33.pdf");
-  c14->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem34.pdf");
-  c15->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem35.pdf");
-  c16->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem44.pdf");
-  c17->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem45.pdf");
-  c18->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem77.pdf");
-  c19->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem46.pdf");
-  c20->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem55.pdf");
-  c21->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem56.pdf");
-  c22->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem57.pdf");
-  c23->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem66.pdf");
-  c24->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffMatrix_Elem67.pdf");
-    
+  //c13->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem33.pdf");
+  c13->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem33.png");
+
+  //c14->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem34.pdf");
+  c14->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem34.png");
+
+  //c15->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem35.pdf");
+  c15->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem35.png");
+
+  //c16->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem44.pdf");
+  c16->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem44.png");
+
+  //c17->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem45.pdf");
+  c17->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem45.png");
+
+  //c18->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem77.pdf");
+  c18->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem77.png");
+
+  //c19->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem46.pdf");
+  c19->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem46.png");
+
+  //c20->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem55.pdf");
+  c20->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem55.png");
+
+  //c21->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem56.pdf");
+  c21->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem56.png");
+
+  //c22->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem57.pdf");
+  c22->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem57.png");
+
+  //c23->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem66.pdf");
+  c23->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem66.png");
+
+  //c24->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem67.pdf");
+  c24->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffMatrix_Elem67.png");
+
 }
 
 void gains(){
 
-  TFile *fDiffGains = TFile::Open("Calibration_run_10000014_Sep_20_2022/diffGains_Sep_20_2022.root");
+  TFile *fDiffGains = TFile::Open("Results/run_10000015/Calibration_Sep_28_2022/diffGains_Sep_28_2022.root");
   TTree* DiffGains = (TTree*)fDiffGains->Get("DiffGains");
-  TCanvas *c1 = new TCanvas("c1","",800,600);
 
   // index vs diff gains
+  TCanvas *c1 = new TCanvas("c1","",800,600);
   DiffGains->Draw("index:diffGains>>H");
   //  c1->SetLogy();
   c1->Update();
@@ -1486,18 +1535,22 @@ void gains(){
   mME42_line->Draw("SAME");
   end_line->Draw("SAME");
 
-  c1->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffGains_rings.pdf");
+  //c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffGains_rings.pdf");
+  c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffGains_rings.png");
   
   // diff gains
   TCanvas *c2  = new TCanvas("c2","",800,600);
   c2->SetLogy();
   DiffGains->Draw("diffGains");
-  c2->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffGains_.pdf");
+
+  //c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffGains_.pdf");
+  c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffGains_.png");
+
 }
 
 void xtalk() {
 
-  TFile *fDiffXtalk = TFile::Open("Calibration_run_10000014_Sep_20_2022/diffXtalk_Sep_20_2022.root");
+  TFile *fDiffXtalk = TFile::Open("Results/run_10000015/Calibration_Sep_28_2022/diffXtalk_Sep_28_2022.root");
   TTree* DiffXtalk = (TTree*)fDiffXtalk->Get("DiffXtalk");
 
   // index vs diff crosstalk
@@ -1532,6 +1585,8 @@ void xtalk() {
 
   c1->cd();
   DiffXtalk->Draw("index:diffIntL");
+  auto htemp1 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp1->GetXaxis()->SetLimits(-2.0,2.0);
   c1->Update();
 
   TLine *pME11b_line_1 = new TLine(c1->GetUxmin(), pME11b, c1->GetUxmax(), pME11b);
@@ -1624,6 +1679,8 @@ void xtalk() {
 
   c2->cd();
   DiffXtalk->Draw("index:diffIntR");
+  auto htemp2 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp2->GetXaxis()->SetLimits(-2.0,2.0);
   c2->Update();
 
   TLine *pME11b_line_2 = new TLine(c2->GetUxmin(), pME11b, c2->GetUxmax(), pME11b);
@@ -1716,6 +1773,8 @@ void xtalk() {
 
   c3->cd();
   DiffXtalk->Draw("index:diffXtalkL");
+  auto htemp3 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp3->GetXaxis()->SetLimits(-2.0,2.0);
   c3->Update();
 
   TLine *pME11b_line_3 = new TLine(c3->GetUxmin(), pME11b, c3->GetUxmax(), pME11b);
@@ -1808,29 +1867,31 @@ void xtalk() {
 
   c4->cd();
   DiffXtalk->Draw("index:diffXtalkR");
+  auto htemp4 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp4->GetXaxis()->SetLimits(-2.0,2.0);
   c4->Update();
 
-  TLine *pME11b_line_4 = new TLine(c1->GetUxmin(), pME11b, c1->GetUxmax(), pME11b);
-  TLine *pME12_line_4 = new TLine(c1->GetUxmin(), pME12, c1->GetUxmax(), pME12);
-  TLine *pME13_line_4 = new TLine(c1->GetUxmin(), pME13, c1->GetUxmax(), pME13);
-  TLine *pME11a_line_4 = new TLine(c1->GetUxmin(), pME11a, c1->GetUxmax(), pME11a);
-  TLine *pME21_line_4 = new TLine(c1->GetUxmin(), pME21, c1->GetUxmax(), pME21);
-  TLine *pME22_line_4 = new TLine(c1->GetUxmin(), pME22, c1->GetUxmax(), pME22);
-  TLine *pME31_line_4 = new TLine(c1->GetUxmin(), pME31, c1->GetUxmax(), pME31);
-  TLine *pME32_line_4 = new TLine(c1->GetUxmin(), pME32, c1->GetUxmax(), pME32);
-  TLine *pME41_line_4 = new TLine(c1->GetUxmin(), pME41, c1->GetUxmax(), pME41);
-  TLine *pME42_line_4 = new TLine(c1->GetUxmin(), pME42, c1->GetUxmax(), pME42);
-  TLine *mME11b_line_4 = new TLine(c1->GetUxmin(), mME11b, c1->GetUxmax(), mME11b);
-  TLine *mME12_line_4 = new TLine(c1->GetUxmin(), mME12, c1->GetUxmax(), mME12);
-  TLine *mME13_line_4 = new TLine(c1->GetUxmin(), mME13, c1->GetUxmax(), mME13);
-  TLine *mME11a_line_4 = new TLine(c1->GetUxmin(), mME11a, c1->GetUxmax(), mME11a);
-  TLine *mME21_line_4 = new TLine(c1->GetUxmin(), mME21, c1->GetUxmax(), mME21);
-  TLine *mME22_line_4 = new TLine(c1->GetUxmin(), mME22, c1->GetUxmax(), mME22);
-  TLine *mME31_line_4 = new TLine(c1->GetUxmin(), mME31, c1->GetUxmax(), mME31);
-  TLine *mME32_line_4 = new TLine(c1->GetUxmin(), mME32, c1->GetUxmax(), mME32);
-  TLine *mME41_line_4 = new TLine(c1->GetUxmin(), mME41, c1->GetUxmax(), mME41);
-  TLine *mME42_line_4 = new TLine(c1->GetUxmin(), mME42, c1->GetUxmax(), mME42);
-  TLine *end_line_4 = new TLine(c1->GetUxmin(), end, c1->GetUxmax(), end);
+  TLine *pME11b_line_4 = new TLine(c4->GetUxmin(), pME11b, c4->GetUxmax(), pME11b);
+  TLine *pME12_line_4 = new TLine(c4->GetUxmin(), pME12, c4->GetUxmax(), pME12);
+  TLine *pME13_line_4 = new TLine(c4->GetUxmin(), pME13, c4->GetUxmax(), pME13);
+  TLine *pME11a_line_4 = new TLine(c4->GetUxmin(), pME11a, c4->GetUxmax(), pME11a);
+  TLine *pME21_line_4 = new TLine(c4->GetUxmin(), pME21, c4->GetUxmax(), pME21);
+  TLine *pME22_line_4 = new TLine(c4->GetUxmin(), pME22, c4->GetUxmax(), pME22);
+  TLine *pME31_line_4 = new TLine(c4->GetUxmin(), pME31, c4->GetUxmax(), pME31);
+  TLine *pME32_line_4 = new TLine(c4->GetUxmin(), pME32, c4->GetUxmax(), pME32);
+  TLine *pME41_line_4 = new TLine(c4->GetUxmin(), pME41, c4->GetUxmax(), pME41);
+  TLine *pME42_line_4 = new TLine(c4->GetUxmin(), pME42, c4->GetUxmax(), pME42);
+  TLine *mME11b_line_4 = new TLine(c4->GetUxmin(), mME11b, c4->GetUxmax(), mME11b);
+  TLine *mME12_line_4 = new TLine(c4->GetUxmin(), mME12, c4->GetUxmax(), mME12);
+  TLine *mME13_line_4 = new TLine(c4->GetUxmin(), mME13, c4->GetUxmax(), mME13);
+  TLine *mME11a_line_4 = new TLine(c4->GetUxmin(), mME11a, c4->GetUxmax(), mME11a);
+  TLine *mME21_line_4 = new TLine(c4->GetUxmin(), mME21, c4->GetUxmax(), mME21);
+  TLine *mME22_line_4 = new TLine(c4->GetUxmin(), mME22, c4->GetUxmax(), mME22);
+  TLine *mME31_line_4 = new TLine(c4->GetUxmin(), mME31, c4->GetUxmax(), mME31);
+  TLine *mME32_line_4 = new TLine(c4->GetUxmin(), mME32, c4->GetUxmax(), mME32);
+  TLine *mME41_line_4 = new TLine(c4->GetUxmin(), mME41, c4->GetUxmax(), mME41);
+  TLine *mME42_line_4 = new TLine(c4->GetUxmin(), mME42, c4->GetUxmax(), mME42);
+  TLine *end_line_4 = new TLine(c4->GetUxmin(), end, c4->GetUxmax(), end);
 
   pME11b_line_4->SetLineColor(kRed);
   pME12_line_4->SetLineColor(kRed);
@@ -1898,11 +1959,18 @@ void xtalk() {
   mME42_line_4->Draw("SAME");
   end_line_4->Draw("SAME");
 
-  c1->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffXtalk_IntL_rings.pdf");
-  c2->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffXtalk_IntR_rings.pdf");
-  c3->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffXtalk_XTalkL_rings.pdf");
-  c4->Print("Plots_Calibration_run_10000014_Sep_20_2022/index_vs_diffXtalk_XTalkR_rings.pdf");
-
+  //c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_IntL_rings.pdf");
+  c1->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_IntL_rings.png");
+  
+  //c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_IntR_rings.pdf");
+  c2->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_IntR_rings.png");
+  
+  //c3->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_XTalkL_rings.pdf");
+  c3->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_XTalkL_rings.png");
+  
+  //c4->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_XTalkR_rings.pdf");
+  c4->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/index_vs_diffXtalk_XTalkR_rings.png");
+  
   // diff crosstalk
 
   TCanvas *c5 = new TCanvas("c5","",1000,1000);
@@ -1918,23 +1986,41 @@ void xtalk() {
 
   c5->cd();
   DiffXtalk->Draw("diffIntL");
-  c5->cd();
-  DiffXtalk->Draw("diffIntR");
-  c6->cd();
-  DiffXtalk->Draw("diffXtalkL");
-  c7->cd();
-  DiffXtalk->Draw("diffXtalkR");
+  auto htemp5 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp5->GetXaxis()->SetLimits(-2.0,10.0);
 
-  c5->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffXtalk_IntL.pdf");
-  c6->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffXtalk_IntR.pdf");
-  c7->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffXtalk_XTalkL.pdf");
-  c8->Print("Plots_Calibration_run_10000014_Sep_20_2022/diffXtalk_XTalkR.pdf");
+  c6->cd();
+  DiffXtalk->Draw("diffIntR");
+  auto htemp6 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp6->GetXaxis()->SetLimits(-2.0,10.0);
+
+  c7->cd();
+  DiffXtalk->Draw("diffXtalkL");
+  auto htemp7 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp7->GetXaxis()->SetLimits(-2.0,2.0);
+
+  c8->cd();
+  DiffXtalk->Draw("diffXtalkR");
+  auto htemp8 = (TH2F*)gPad->GetPrimitive("htemp");
+  htemp8->GetXaxis()->SetLimits(-2.0,2.0);
+
+  //c5->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_IntL.pdf");
+  c5->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_IntL.png");
+
+  //c6->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_IntR.pdf");
+  c6->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_IntR.png");
+
+  //c7->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_XTalkL.pdf");
+  c7->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_XTalkL.png");
+
+  //c8->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_XTalkR.pdf");
+  c8->Print("Figures/CSCCalib_run_10000015_Sep_28_2022/diffXtalk_XTalkR.png");
 
 }
 
 void makePlots(){
-  //peds();
-  matrix();
-  //gains();
   xtalk();
+  //peds();
+  //matrix();
+  //gains();
 }
