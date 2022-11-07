@@ -1,14 +1,13 @@
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("TEST")
+from Configuration.Eras.Era_Run3_cff import Run3
+process = cms.Process("TEST", Run3)
 
-#process.load("Configuration/StandardSequences/Geometry_cff")
 process.load("Configuration/StandardSequences/GeometryDB_cff")
 process.load("Configuration/StandardSequences/MagneticField_cff")
 process.load("Configuration/StandardSequences/FrontierConditions_GlobalTag_cff")
 process.load("Configuration/StandardSequences/RawToDigi_Data_cff")
 process.load("Configuration.StandardSequences.Reconstruction_cff")
-
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 
 
@@ -17,7 +16,7 @@ process.load('Configuration.StandardSequences.Services_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #process.GlobalTag.globaltag = 'GR_P_V54'
 #process.GlobalTag.globaltag = '74X_mcRun2_startup_v2'
-process.GlobalTag.globaltag = '123X_dataRun3_HLT_v8'
+process.GlobalTag.globaltag = '124X_dataRun3_v9'
 
 #### to use local sqlite file
 process.load("CalibMuon.Configuration.getCSCConditions_frontier_cff")
@@ -33,38 +32,9 @@ process.cscConditions.toGet = cms.VPSet(
             tag = cms.string('CSCDBPedestals_Testing_Sep_2022'))
     )
 process.es_prefer_cscConditions = cms.ESPrefer("PoolDBESSource","cscConditions")
-
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
-
 process.options = cms.untracked.PSet( SkipEvent = cms.untracked.vstring('ProductNotFound') )
-
-#process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2012D/SingleMu/RAW/v1/000/208/307/FE3B52A0-B93A-E211-8FA3-BCAEC518FF76.root"))
 process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/store/data/Run2022D/Muon/RAW/v1/000/357/538/00000/78a9c700-a249-4831-95aa-cf43c67ab824.root"))
-#process.source = cms.Source ("PoolSource",
-#                             fileNames = cms.untracked.vstring(
-#                                                               "/store/data/Run2015B/SingleMu/RAW/v1/000/251/156/00000/1A670C95-0D25-E511-8601-02163E011F63.root"
-#                                                               )
-#                             )
-
-
-####   START OF EXPLICIT POSTLS1 CONFIGURATION    #####
-
-process.load("CalibMuon.CSCCalibration.CSCChannelMapper_cfi")
-process.load("CalibMuon.CSCCalibration.CSCIndexer_cfi")
-process.CSCIndexerESProducer.AlgoName = cms.string("CSCIndexerPostls1")
-process.CSCChannelMapperESProducer.AlgoName = cms.string("CSCChannelMapperPostls1")
-
-# ME1/1A is unganged
-process.CSCGeometryESModule.useGangedStripsInME1a = False
-process.idealForDigiCSCGeometry.useGangedStripsInME1a = False
-
-# Turn off some flags for CSCRecHitD that are turned ON in default config
-process.csc2DRecHits.readBadChannels = cms.bool(False)
-process.csc2DRecHits.CSCUseGasGainCorrections = cms.bool(False)
-# Already defaults OFF...
-## process.csc2DRecHits.CSCUseTimingCorrections = cms.bool(False)
-
-####   END OF EXPLICIT POSTLS1 CONFIGURATION    #####
 
 
 

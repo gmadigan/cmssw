@@ -6,7 +6,8 @@
 
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("ProcessOne")
+from Configuration.Eras.Era_Run3_cff import Run3
+process = cms.Process("ProcessOne", Run3)
 #PopCon config
 process.load("CondCore.CondDB.CondDB_cfi")
 process.CondDB.connect = cms.string("sqlite_file:DBCrossTalk.db")

@@ -1,6 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("TEST")
+from Configuration.Eras.Era_Run3_cff import Run3
+process = cms.Process("TEST", Run3)
 
 #process.load("Configuration/StandardSequences/Geometry_cff")
 process.load("Configuration/StandardSequences/GeometryDB_cff")
@@ -17,7 +18,7 @@ process.load('Configuration.StandardSequences.Services_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #process.GlobalTag.globaltag = 'GR_P_V54'
 #process.GlobalTag.globaltag = '74X_mcRun2_startup_v2'
-process.GlobalTag.globaltag = '123X_dataRun3_HLT_v8'
+process.GlobalTag.globaltag = '124X_dataRun3_v9'
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
@@ -34,18 +35,18 @@ process.source = cms.Source ("PoolSource",fileNames = cms.untracked.vstring( "/s
 
 ####   START OF EXPLICIT POSTLS1 CONFIGURATION    #####
 
-process.load("CalibMuon.CSCCalibration.CSCChannelMapper_cfi")
-process.load("CalibMuon.CSCCalibration.CSCIndexer_cfi")
-process.CSCIndexerESProducer.AlgoName = cms.string("CSCIndexerPostls1")
-process.CSCChannelMapperESProducer.AlgoName = cms.string("CSCChannelMapperPostls1")
+#process.load("CalibMuon.CSCCalibration.CSCChannelMapper_cfi")
+#process.load("CalibMuon.CSCCalibration.CSCIndexer_cfi")
+#process.CSCIndexerESProducer.AlgoName = cms.string("CSCIndexerPostls1")
+#process.CSCChannelMapperESProducer.AlgoName = cms.string("CSCChannelMapperPostls1")
 
 # ME1/1A is unganged
-process.CSCGeometryESModule.useGangedStripsInME1a = False
-process.idealForDigiCSCGeometry.useGangedStripsInME1a = False
+#process.CSCGeometryESModule.useGangedStripsInME1a = False
+#process.idealForDigiCSCGeometry.useGangedStripsInME1a = False
 
 # Turn off some flags for CSCRecHitD that are turned ON in default config
-process.csc2DRecHits.readBadChannels = cms.bool(False)
-process.csc2DRecHits.CSCUseGasGainCorrections = cms.bool(False)
+#process.csc2DRecHits.readBadChannels = cms.bool(False)
+#process.csc2DRecHits.CSCUseGasGainCorrections = cms.bool(False)
 # Already defaults OFF...
 ## process.csc2DRecHits.CSCUseTimingCorrections = cms.bool(False)
 
