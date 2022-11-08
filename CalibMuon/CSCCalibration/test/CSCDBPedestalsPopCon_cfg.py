@@ -1,17 +1,18 @@
 # The following comments couldn't be translated into the new config version:
 
 # eg to write payload to the oracle database 
-#   replace CondDBCommon.connect = "oracle://cms_orcoff_int2r/CMS_COND_CSC"
+#   replace CondDB.connect = "oracle://cms_orcoff_int2r/CMS_COND_CSC"
 # Database output service
 
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("ProcessOne")
+from Configuration.Eras.Era_Run3_cff import Run3
+process = cms.Process("ProcessOne", Run3)
 #PopCon config
-process.load("CondCore.DBCommon.CondDBCommon_cfi")
-process.CondDBCommon.connect = cms.string("sqlite_file:DBPedestals.db")
-#process.CondDBCommon.connect = cms.string("oracle://cms_orcoff_prep/CMS_COND_CSC")
-process.CondDBCommon.DBParameters.authenticationPath = '/afs/cern.ch/cms/DB/conddb'
+process.load("CondCore.CondDB.CondDB_cfi")
+process.CondDB.connect = cms.string("sqlite_file:DBPedestals.db")
+#process.CondDB.connect = cms.string("oracle://cms_orcoff_prep/CMS_COND_CSC")
+process.CondDB.DBParameters.authenticationPath = '/afs/cern.ch/cms/DB/conddb'
 
 process.MessageLogger = cms.Service("MessageLogger",
     cerr = cms.untracked.PSet(
@@ -34,11 +35,11 @@ process.source = cms.Source("EmptyIOVSource",
 )
 
 process.PoolDBOutputService = cms.Service("PoolDBOutputService",
-    process.CondDBCommon,
+    process.CondDB,
     logconnect = cms.untracked.string('sqlite_file:pedestalslog.db'),
     toPut = cms.VPSet(cms.PSet(
         record = cms.string('CSCDBPedestalsRcd'),
-        tag = cms.string('CSCDBPedestals_ME42')
+        tag = cms.string('CSCDBPedestals_Testing_Sep_2022')
     ))
 )
 

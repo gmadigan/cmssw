@@ -12,12 +12,12 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
     timetype = cms.string('runnumber'),
     toGet = cms.VPSet(cms.PSet(
         record = cms.string('CSCDBNoiseMatrixRcd'),
-        tag = cms.string('CSCDBNoiseMatrix_express')
+        tag = cms.string('CSCDBNoiseMatrix_hlt')
     )),
     #read from sqlite file
-    connect=cms.string("oracle://cms_orcon_prod/CMS_COND_31X_CSC"),
+    connect=cms.string("frontier://FrontierProd/CMS_CONDITIONS"),
     DBParameters = cms.PSet(
-        authenticationPath = cms.untracked.string('/nfshome0/popcondev/conddb/'),
+        authenticationPath = cms.untracked.string('/afs/cern.ch/cms/DB/conddb'),
         authenticationMethod = cms.untracked.uint32(1)
     )
 )
@@ -25,7 +25,9 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1)
 )
-process.source = cms.Source("EmptySource")
+process.source = cms.Source("EmptySource",
+    firstRun = cms.untracked.uint32(266566)
+)
 
 process.prod = cms.EDAnalyzer("CSCNoiseMatrixDBReadAnalyzer")
 
